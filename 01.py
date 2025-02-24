@@ -19,9 +19,16 @@ print("get_days_from_today", get_days_from_today('2025-02-22'))
 
 # Task2
 def get_numbers_ticket(min, max, quantity):
-    return sorted(sample(range(min, max), quantity))
+    if min >= max:
+        raise ValueError(f"Error: min ({min}) must be less than max ({max})")
 
-print("get_numbers_ticket", get_numbers_ticket(1, 49, 5))
+    range_size = max - min
+    if quantity > range_size:
+        raise ValueError(f"Error: cannot select {quantity} nambers from a range of size {range_size}")
+    
+    return sorted(sample(range(min, max), quantity))
+  
+print("get_numbers_ticket", get_numbers_ticket(50, 49, 30))
 
 # Task 3
 def normalize_phone(phone_number):
